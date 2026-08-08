@@ -1,0 +1,178 @@
+{
+ "sampling": {
+  "method": "Enumerated the Marketplace's own category taxonomy via the public extensionquery API, sorted by install count, paging until a cap.",
+  "bias": "HEAD-BIASED. Categories larger than the page cap are truncated from the top, so the long tail is under-represented. Percentages of low-install extensions are FLOORS, not estimates.",
+  "not_a_census": true,
+  "deduplicated": "An extension appearing in several categories is counted once, under the first category it was seen in."
+ },
+ "extensions": 64490,
+ "publishers": 50468,
+ "installs_represented": 5688542991,
+ "median_installs": 804,
+ "p25_installs": 133,
+ "p75_installs": 3519,
+ "max_installs": 231321041,
+ "top1_share_pct": 87.4,
+ "top5_share_pct": 96.1,
+ "top10_share_pct": 98.0,
+ "under_100_pct_floor": 22.5,
+ "under_1000_pct_floor": 54.4,
+ "stale_12mo_pct": 65.2,
+ "publishers_one_extension_pct": 86.1,
+ "median_extensions_per_publisher": 1,
+ "max_extensions_one_publisher": 286,
+ "by_category": {
+  "AI": {
+   "sampled": 2042,
+   "median_installs": 39,
+   "p90_installs": 1119,
+   "max_installs": 35963003,
+   "under_100_pct_floor": 66.6,
+   "stale_12mo_pct": 13.8
+  },
+  "Chat": {
+   "sampled": 121,
+   "median_installs": 49,
+   "p90_installs": 916,
+   "max_installs": 7530,
+   "under_100_pct_floor": 59.5,
+   "stale_12mo_pct": 4.1
+  },
+  "Data Science": {
+   "sampled": 765,
+   "median_installs": 128,
+   "p90_installs": 3174,
+   "max_installs": 86661222,
+   "under_100_pct_floor": 46.0,
+   "stale_12mo_pct": 19.1
+  },
+  "Debuggers": {
+   "sampled": 1818,
+   "median_installs": 508,
+   "p90_installs": 23233,
+   "max_installs": 136696798,
+   "under_100_pct_floor": 24.6,
+   "stale_12mo_pct": 39.2
+  },
+  "Education": {
+   "sampled": 852,
+   "median_installs": 46,
+   "p90_installs": 755,
+   "max_installs": 3236388,
+   "under_100_pct_floor": 64.4,
+   "stale_12mo_pct": 24.8
+  },
+  "Extension Packs": {
+   "sampled": 3573,
+   "median_installs": 272,
+   "p90_installs": 7678,
+   "max_installs": 107863168,
+   "under_100_pct_floor": 30.5,
+   "stale_12mo_pct": 84.0
+  },
+  "Formatters": {
+   "sampled": 2879,
+   "median_installs": 286,
+   "p90_installs": 10581,
+   "max_installs": 70648352,
+   "under_100_pct_floor": 31.0,
+   "stale_12mo_pct": 50.9
+  },
+  "Keymaps": {
+   "sampled": 488,
+   "median_installs": 229,
+   "p90_installs": 8579,
+   "max_installs": 8951000,
+   "under_100_pct_floor": 33.0,
+   "stale_12mo_pct": 68.0
+  },
+  "Language Packs": {
+   "sampled": 200,
+   "median_installs": 233,
+   "p90_installs": 38022,
+   "max_installs": 54311664,
+   "under_100_pct_floor": 30.5,
+   "stale_12mo_pct": 51.5
+  },
+  "Linters": {
+   "sampled": 3904,
+   "median_installs": 53,
+   "p90_installs": 2080,
+   "max_installs": 17917489,
+   "under_100_pct_floor": 59.2,
+   "stale_12mo_pct": 26.6
+  },
+  "Machine Learning": {
+   "sampled": 1628,
+   "median_installs": 43,
+   "p90_installs": 673,
+   "max_installs": 876123,
+   "under_100_pct_floor": 64.6,
+   "stale_12mo_pct": 15.4
+  },
+  "Notebooks": {
+   "sampled": 252,
+   "median_installs": 60,
+   "p90_installs": 2474,
+   "max_installs": 87491156,
+   "under_100_pct_floor": 57.5,
+   "stale_12mo_pct": 36.5
+  },
+  "Other": {
+   "sampled": 11997,
+   "median_installs": 3147,
+   "p90_installs": 44556,
+   "max_installs": 81100443,
+   "under_100_pct_floor": 0.0,
+   "stale_12mo_pct": 83.6
+  },
+  "Programming Languages": {
+   "sampled": 8991,
+   "median_installs": 1865,
+   "p90_installs": 70492,
+   "max_installs": 231321041,
+   "under_100_pct_floor": 0.0,
+   "stale_12mo_pct": 75.5
+  },
+  "SCM Providers": {
+   "sampled": 1365,
+   "median_installs": 31,
+   "p90_installs": 1101,
+   "max_installs": 51863721,
+   "under_100_pct_floor": 68.9,
+   "stale_12mo_pct": 17.8
+  },
+  "Snippets": {
+   "sampled": 7983,
+   "median_installs": 297,
+   "p90_installs": 12175,
+   "max_installs": 21873232,
+   "under_100_pct_floor": 36.4,
+   "stale_12mo_pct": 77.1
+  },
+  "Testing": {
+   "sampled": 879,
+   "median_installs": 82,
+   "p90_installs": 2304,
+   "max_installs": 46283613,
+   "under_100_pct_floor": 52.0,
+   "stale_12mo_pct": 28.0
+  },
+  "Themes": {
+   "sampled": 11637,
+   "median_installs": 1017,
+   "p90_installs": 11618,
+   "max_installs": 58249332,
+   "under_100_pct_floor": 0.0,
+   "stale_12mo_pct": 88.5
+  },
+  "Visualization": {
+   "sampled": 3116,
+   "median_installs": 73,
+   "p90_installs": 2003,
+   "max_installs": 23077074,
+   "under_100_pct_floor": 54.9,
+   "stale_12mo_pct": 20.4
+  }
+ }
+}
