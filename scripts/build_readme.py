@@ -8,7 +8,40 @@ Every one of those was a human-typed figure. Generating the prose from the summa
 that class of error impossible rather than merely discouraged: change the data, re-run,
 and every figure moves together.
 """
-import json, sys
+import csv, json, pathlib, sys
+
+REPO = pathlib.Path(__file__).resolve().parent.parent
+
+# THE DEFAULT USED TO BE `/srv/agents/make-money/research/vsx-summary.json`, AND THAT FILE IS
+# THE PRE-OMISSION CRAWL. Twenty-four rows were withheld after it was written (GitHub secret
+# scanning misclassifies their base32 publisher ids), so it says 64,514 / 50,484 while the
+# files this repo actually publishes hold 64,490 / 50,468. Running the documented command
+# therefore rewrote twenty figures back to a crawl that does not match the download — which
+# is the exact defect the repo description was corrected for on 2026-08-08: *a reader was
+# told they would get 24 more extensions than they get.* The default is the published
+# summary now, and `gate()` re-derives the two headline figures from the published CSV so a
+# summary that has drifted from the files cannot pass either.
+DEFAULT_SUMMARY = REPO / "data" / "summary.json"
+PUBLISHED_CSV = REPO / "data" / "extensions.csv"
+
+
+def gate(s):
+    """The published FILES are the authority, not the summary and not this script."""
+    if not PUBLISHED_CSV.exists():
+        raise SystemExit(f"{PUBLISHED_CSV} is missing — cannot check the summary against "
+                         "what the repository actually publishes.")
+    with PUBLISHED_CSV.open(newline="") as fh:
+        rows = list(csv.DictReader(fh))
+    pubcol = "publisher" if "publisher" in rows[0] else "publisher_id"
+    real = {"extensions": len(rows), "publishers": len({r[pubcol] for r in rows})}
+    bad = {k: (s[k], v) for k, v in real.items() if s[k] != v}
+    if bad:
+        raise SystemExit(
+            "summary disagrees with the published CSV — " + ", ".join(
+                f"{k}: summary says {a:,}, {PUBLISHED_CSV.name} holds {b:,}"
+                for k, (a, b) in bad.items()) +
+            ". The files a reader downloads are the authority; fix the summary, not this.")
+    return real
 
 
 def build(s):
@@ -136,17 +169,25 @@ because the platform does not publish it:
 - **[Browsable category and seller breakdowns](https://sujeito-operator.github.io/gumroad-market-data/)**
   of that dataset. There is also a paid report built on it; the free data is unconditional
   either way and nothing in it is gated behind the report.
+- **[The report pays a revenue share to whoever sends the buyer](https://sujeito-operator.github.io/gumroad-market-data/affiliates.html)**
+  — the rate, the terms, what the data does and does not support, how many copies it has sold
+  so far, and every caveat are all on that one page, and you sign yourself up from it without
+  waiting for a reply. Gumroad tracks and pays it. You need a Gumroad account; that is the
+  only requirement.
 
 *(Deliberately no figures in this section: it describes another repository whose numbers
-move when that dataset is recrawled, and a sentence with no number in it cannot go stale.)*
+move when that dataset is recrawled, and a sentence with no number in it cannot go stale.
+That is why the rate is behind the link rather than typed here — the linked page regenerates
+from a file the operator repo writes only after re-reading the live product page.)*
 
 Data: CC BY 4.0. Code: MIT.
 """
 
 
 if __name__ == "__main__":
-    s = json.load(open(sys.argv[1] if len(sys.argv) > 1
-                       else "/srv/agents/make-money/research/vsx-summary.json"))
-    out = sys.argv[2] if len(sys.argv) > 2 else "/tmp/vsx-README.md"
+    s = json.load(open(sys.argv[1] if len(sys.argv) > 1 else DEFAULT_SUMMARY))
+    real = gate(s)
+    out = sys.argv[2] if len(sys.argv) > 2 else REPO / "README.md"
     open(out, "w").write(build(s))
-    print(f"wrote {out}")
+    print(f"wrote {out} — checked against {PUBLISHED_CSV.name}: "
+          f"{real['extensions']:,} extensions, {real['publishers']:,} publishers")
