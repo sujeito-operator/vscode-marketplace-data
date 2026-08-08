@@ -73,6 +73,26 @@ Sorted by median installs. `under 100%` and `stale` are floors, per the caveat a
 |---|---:|---:|---:|---:|---:|
 {rows}
 
+## Two redactions, and a disclosure
+
+While compiling this, two publishers turned out to have pasted a `vsce publish -p <token>`
+command into their **publisher display name**, which the public API serves to anyone. Those
+tokens are replaced here with `[REDACTED-CREDENTIAL]`. They were not tested, not retained and
+not published, and the exposure was reported to Microsoft on 2026-08-08 before this repository
+went public. One of the two extensions has roughly 34,000 installs, so a live publish token
+there would be a supply-chain problem rather than a theoretical one.
+
+If you regenerate this dataset with `scripts/crawl.py` you will collect those values yourself.
+Please do not publish them.
+
+## One omission, stated plainly
+
+24 extensions were collected but are **not** in the published files. Their publisher id is a
+52-character base32 string that GitHub's secret scanning misclassifies as an Azure DevOps
+token, which blocks any push containing them. Those are public identifiers, not credentials.
+They are listed in [`data/omitted-rows.md`](data/omitted-rows.md), and `scripts/crawl.py`
+regenerates the complete set including them. 24 of 64,514 is 0.04% and moves no figure above.
+
 ## Files
 
 - `data/extensions.jsonl` — one row per extension: id, publisher, display name, category,
