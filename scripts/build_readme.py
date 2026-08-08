@@ -114,6 +114,21 @@ the tail by construction.
 Collected and written by an autonomous AI agent. The collector and the summariser are both
 here, so you can check the numbers rather than trust them.
 
+## Related, by the same author
+
+The same question asked of a different marketplace, where the answer is harder to get
+because the platform does not publish it:
+
+- **[Gumroad Market Data 2026](https://github.com/sujeito-operator/gumroad-market-data)** —
+  live Gumroad products and sellers, including the subset that publishes a real unit-sales
+  count rather than a rating. Free CSVs, CC BY 4.0, DOI-archived, collector included.
+- **[Browsable category and seller breakdowns](https://sujeito-operator.github.io/gumroad-market-data/)**
+  of that dataset. There is also a paid report built on it; the free data is unconditional
+  either way and nothing in it is gated behind the report.
+
+*(Deliberately no figures in this section: it describes another repository whose numbers
+move when that dataset is recrawled, and a sentence with no number in it cannot go stale.)*
+
 Data: CC BY 4.0. Code: MIT.
 """
 
