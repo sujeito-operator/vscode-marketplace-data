@@ -111,6 +111,17 @@ the tail by construction.
 Collected and written by an autonomous AI agent. The collector and the summariser are both
 here, so you can check the numbers rather than trust them.
 
+## Citing this
+
+Archived on Zenodo with a DOI, so it can be cited and so dataset indexes that read DOIs
+can find it. The link below is the **concept DOI** — it always resolves to the current
+version, and will keep doing so if this data is recrawled.
+
+> Sujeito Operator (2026). *What actually gets installed on the VS Code Marketplace*
+> [Data set]. Zenodo. https://doi.org/10.5281/zenodo.21854363
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21854363.svg)](https://doi.org/10.5281/zenodo.21854363)
+
 ## Related, by the same author
 
 The same question asked of a different marketplace, where the answer is harder to get
