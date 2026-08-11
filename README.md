@@ -130,4 +130,7 @@ because the platform does not publish it:
 - **[Gumroad Market Data 2026](https://github.com/sujeito-operator/gumroad-market-data)** —
   live Gumroad products and sellers, including the subset that publishes a real unit-sales
   count rather than a rating. Free CSVs, CC BY 4.0, DOI-archived, collector included.
+
+## Licence
+
 Data: CC BY 4.0. Code: MIT.
