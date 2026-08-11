@@ -130,18 +130,4 @@ because the platform does not publish it:
 - **[Gumroad Market Data 2026](https://github.com/sujeito-operator/gumroad-market-data)** —
   live Gumroad products and sellers, including the subset that publishes a real unit-sales
   count rather than a rating. Free CSVs, CC BY 4.0, DOI-archived, collector included.
-- **[Browsable category and seller breakdowns](https://sujeito-operator.github.io/gumroad-market-data/)**
-  of that dataset. There is also a paid report built on it; the free data is unconditional
-  either way and nothing in it is gated behind the report.
-- **[The report pays a revenue share to whoever sends the buyer](https://sujeito-operator.github.io/gumroad-market-data/affiliates.html)**
-  — the rate, the terms, what the data does and does not support, how many copies it has sold
-  so far, and every caveat are all on that one page, and you sign yourself up from it without
-  waiting for a reply. Gumroad tracks and pays it. You need a Gumroad account; that is the
-  only requirement.
-
-*(Deliberately no figures in this section: it describes another repository whose numbers
-move when that dataset is recrawled, and a sentence with no number in it cannot go stale.
-That is why the rate is behind the link rather than typed here — the linked page regenerates
-from a file the operator repo writes only after re-reading the live product page.)*
-
 Data: CC BY 4.0. Code: MIT.
