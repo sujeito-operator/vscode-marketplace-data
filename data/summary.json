@@ -5,9 +5,9 @@
   "not_a_census": true,
   "deduplicated": "An extension appearing in several categories is counted once, under the first category it was seen in."
  },
- "extensions": 64490,
- "publishers": 50468,
- "installs_represented": 5688542991,
+ "extensions": 64464,
+ "publishers": 50446,
+ "installs_represented": 5688436895,
  "median_installs": 804,
  "p25_installs": 133,
  "p75_installs": 3519,
@@ -23,9 +23,9 @@
  "max_extensions_one_publisher": 286,
  "by_category": {
   "AI": {
-   "sampled": 2042,
+   "sampled": 2040,
    "median_installs": 39,
-   "p90_installs": 1119,
+   "p90_installs": 1120,
    "max_installs": 35963003,
    "under_100_pct_floor": 66.6,
    "stale_12mo_pct": 13.8
@@ -47,7 +47,7 @@
    "stale_12mo_pct": 19.1
   },
   "Debuggers": {
-   "sampled": 1818,
+   "sampled": 1817,
    "median_installs": 508,
    "p90_installs": 23233,
    "max_installs": 136696798,
@@ -55,23 +55,23 @@
    "stale_12mo_pct": 39.2
   },
   "Education": {
-   "sampled": 852,
-   "median_installs": 46,
-   "p90_installs": 755,
+   "sampled": 850,
+   "median_installs": 47,
+   "p90_installs": 763,
    "max_installs": 3236388,
    "under_100_pct_floor": 64.4,
    "stale_12mo_pct": 24.8
   },
   "Extension Packs": {
-   "sampled": 3573,
+   "sampled": 3569,
    "median_installs": 272,
    "p90_installs": 7678,
    "max_installs": 107863168,
-   "under_100_pct_floor": 30.5,
-   "stale_12mo_pct": 84.0
+   "under_100_pct_floor": 30.4,
+   "stale_12mo_pct": 83.9
   },
   "Formatters": {
-   "sampled": 2879,
+   "sampled": 2875,
    "median_installs": 286,
    "p90_installs": 10581,
    "max_installs": 70648352,
@@ -95,11 +95,11 @@
    "stale_12mo_pct": 51.5
   },
   "Linters": {
-   "sampled": 3904,
+   "sampled": 3903,
    "median_installs": 53,
-   "p90_installs": 2080,
+   "p90_installs": 2077,
    "max_installs": 17917489,
-   "under_100_pct_floor": 59.2,
+   "under_100_pct_floor": 59.3,
    "stale_12mo_pct": 26.6
   },
   "Machine Learning": {
@@ -119,8 +119,8 @@
    "stale_12mo_pct": 36.5
   },
   "Other": {
-   "sampled": 11997,
-   "median_installs": 3147,
+   "sampled": 11996,
+   "median_installs": 3148,
    "p90_installs": 44556,
    "max_installs": 81100443,
    "under_100_pct_floor": 0.0,
@@ -143,36 +143,45 @@
    "stale_12mo_pct": 17.8
   },
   "Snippets": {
-   "sampled": 7983,
+   "sampled": 7978,
    "median_installs": 297,
-   "p90_installs": 12175,
+   "p90_installs": 12177,
    "max_installs": 21873232,
    "under_100_pct_floor": 36.4,
    "stale_12mo_pct": 77.1
   },
   "Testing": {
-   "sampled": 879,
+   "sampled": 878,
    "median_installs": 82,
    "p90_installs": 2304,
    "max_installs": 46283613,
-   "under_100_pct_floor": 52.0,
+   "under_100_pct_floor": 51.9,
    "stale_12mo_pct": 28.0
   },
   "Themes": {
-   "sampled": 11637,
+   "sampled": 11633,
    "median_installs": 1017,
-   "p90_installs": 11618,
+   "p90_installs": 11611,
    "max_installs": 58249332,
    "under_100_pct_floor": 0.0,
    "stale_12mo_pct": 88.5
   },
   "Visualization": {
-   "sampled": 3116,
+   "sampled": 3115,
    "median_installs": 73,
-   "p90_installs": 2003,
+   "p90_installs": 1996,
    "max_installs": 23077074,
-   "under_100_pct_floor": 54.9,
+   "under_100_pct_floor": 55.0,
    "stale_12mo_pct": 20.4
   }
+ },
+ "omitted": {
+  "rows": 50,
+  "uuid_publisher": 26,
+  "base32_publisher": 24,
+  "installs": 208593,
+  "crawl_total": 64514,
+  "reason": "Publisher id has the shape of a secret (Open VSX token / Azure DevOps PAT). Listed in full in data/omitted-rows.md.",
+  "display_names_redacted": 2
  }
 }

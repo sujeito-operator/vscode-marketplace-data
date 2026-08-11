@@ -1,6 +1,6 @@
 # What actually gets installed on the VS Code Marketplace
 
-**64,490 extensions from 50,468 publishers, measured August 2026,
+**64,464 extensions from 50,446 publishers, measured August 2026,
 with real install counts — not a proxy.**
 
 > **The top 1% of extensions hold 87.4% of all installs in this sample.
@@ -27,9 +27,9 @@ and not people who kept the extension.
 
 | | |
 |---|---:|
-| Extensions sampled | 64,490 |
-| Publishers | 50,468 |
-| Installs represented | 5,688,542,991 |
+| Extensions sampled | 64,464 |
+| Publishers | 50,446 |
+| Installs represented | 5,688,436,895 |
 | Median installs | 804 |
 | 25th / 75th percentile | 133 / 3,519 |
 | Largest single extension | 231,321,041 |
@@ -50,45 +50,53 @@ Sorted by median installs. `under 100%` and `stale` are floors, per the caveat a
 
 | Category | Sampled | Median installs | 90th pct | Under 100 | Stale >12mo |
 |---|---:|---:|---:|---:|---:|
-| Other | 11,997 | 3,147 | 44,556 | 0.0% | 83.6% |
+| Other | 11,996 | 3,148 | 44,556 | 0.0% | 83.6% |
 | Programming Languages | 8,991 | 1,865 | 70,492 | 0.0% | 75.5% |
-| Themes | 11,637 | 1,017 | 11,618 | 0.0% | 88.5% |
-| Debuggers | 1,818 | 508 | 23,233 | 24.6% | 39.2% |
-| Snippets | 7,983 | 297 | 12,175 | 36.4% | 77.1% |
-| Formatters | 2,879 | 286 | 10,581 | 31.0% | 50.9% |
-| Extension Packs | 3,573 | 272 | 7,678 | 30.5% | 84.0% |
+| Themes | 11,633 | 1,017 | 11,611 | 0.0% | 88.5% |
+| Debuggers | 1,817 | 508 | 23,233 | 24.6% | 39.2% |
+| Snippets | 7,978 | 297 | 12,177 | 36.4% | 77.1% |
+| Formatters | 2,875 | 286 | 10,581 | 31.0% | 50.9% |
+| Extension Packs | 3,569 | 272 | 7,678 | 30.4% | 83.9% |
 | Language Packs | 200 | 233 | 38,022 | 30.5% | 51.5% |
 | Keymaps | 488 | 229 | 8,579 | 33.0% | 68.0% |
 | Data Science | 765 | 128 | 3,174 | 46.0% | 19.1% |
-| Testing | 879 | 82 | 2,304 | 52.0% | 28.0% |
-| Visualization | 3,116 | 73 | 2,003 | 54.9% | 20.4% |
+| Testing | 878 | 82 | 2,304 | 51.9% | 28.0% |
+| Visualization | 3,115 | 73 | 1,996 | 55.0% | 20.4% |
 | Notebooks | 252 | 60 | 2,474 | 57.5% | 36.5% |
-| Linters | 3,904 | 53 | 2,080 | 59.2% | 26.6% |
+| Linters | 3,903 | 53 | 2,077 | 59.3% | 26.6% |
 | Chat | 121 | 49 | 916 | 59.5% | 4.1% |
-| Education | 852 | 46 | 755 | 64.4% | 24.8% |
+| Education | 850 | 47 | 763 | 64.4% | 24.8% |
 | Machine Learning | 1,628 | 43 | 673 | 64.6% | 15.4% |
-| AI | 2,042 | 39 | 1,119 | 66.6% | 13.8% |
+| AI | 2,040 | 39 | 1,120 | 66.6% | 13.8% |
 | SCM Providers | 1,365 | 31 | 1,101 | 68.9% | 17.8% |
 
-## Two redactions, and a disclosure
+## What was withheld, stated plainly
 
-While compiling this, two publishers turned out to have pasted a `vsce publish -p <token>`
-command into their **publisher display name**, which the public API serves to anyone. Those
-tokens are replaced here with `[REDACTED-CREDENTIAL]`. They were not tested, not retained and
-not published, and the exposure was reported to Microsoft on 2026-08-08 before this repository
-went public. One of the two extensions has roughly 34,000 installs, so a live publish token
-there would be a supply-chain problem rather than a theoretical one.
+**2 redacted display names.** That many publishers had pasted a
+`vsce publish -p <token>` command into their **publisher display name**, which the public API
+serves to anyone. Those values are replaced here with `[REDACTED-CREDENTIAL]`. They were not
+tested, not retained and not published, and the exposure was reported to Microsoft on
+2026-08-08 before this repository went public. One of those extensions has roughly 34,000
+installs, so a live publish token there would be a supply-chain problem rather than a
+theoretical one.
 
-If you regenerate this dataset with `scripts/crawl.py` you will collect those values yourself.
-Please do not publish them.
+**50 omitted rows** of 64,514 collected — 0.08%,
+208,593 installs, and it moves no figure above. Every one is omitted for the same
+reason: **its publisher id has the shape of a secret**, so a file containing it is a
+credential dump whether or not the string is live. 24 are 52-character
+base32 strings, which GitHub's scanner reads as an Azure DevOps token;
+26 are bare UUIDs, which it reads as an **Open VSX access token**. The
+UUIDs were **not tested against Open VSX** — that would mean using somebody else's
+credential, and the decision to withhold them does not depend on the answer.
 
-## One omission, stated plainly
+Nothing is hidden by being removed: all 50 are listed with their category and
+install count in [`data/omitted-rows.md`](data/omitted-rows.md). `scripts/crawl.py`
+regenerates the complete set including them, and `scripts/scrub.py` reproduces exactly the
+files published here — it refuses to write if a secret-shaped token survives anywhere in
+any of them.
 
-24 extensions were collected but are **not** in the published files. Their publisher id is a
-52-character base32 string that GitHub's secret scanning misclassifies as an Azure DevOps
-token, which blocks any push containing them. Those are public identifiers, not credentials.
-They are listed in [`data/omitted-rows.md`](data/omitted-rows.md), and `scripts/crawl.py`
-regenerates the complete set including them. 24 of 64,514 is 0.04% and moves no figure above.
+If you regenerate this dataset yourself you will collect these values. Please do not
+publish them.
 
 ## Files
 
@@ -130,6 +138,9 @@ because the platform does not publish it:
 - **[Gumroad Market Data 2026](https://github.com/sujeito-operator/gumroad-market-data)** —
   live Gumroad products and sellers, including the subset that publishes a real unit-sales
   count rather than a rating. Free CSVs, CC BY 4.0, DOI-archived, collector included.
+
+*(Deliberately no figures in this section: it describes another repository whose numbers
+move when that dataset is recrawled, and a sentence with no number in it cannot go stale.)*
 
 ## Licence
 

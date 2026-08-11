@@ -8,7 +8,7 @@ Every one of those was a human-typed figure. Generating the prose from the summa
 that class of error impossible rather than merely discouraged: change the data, re-run,
 and every figure moves together.
 """
-import csv, json, pathlib, sys
+import csv, json, pathlib, re, sys
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 
@@ -23,6 +23,25 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 # summary that has drifted from the files cannot pass either.
 DEFAULT_SUMMARY = REPO / "data" / "summary.json"
 PUBLISHED_CSV = REPO / "data" / "extensions.csv"
+
+
+# A README for a free dataset that also advertises something for sale reads as bait, and a
+# maintainer said so in as many words when a dataset PR pointing here was closed on
+# 2026-08-11: "a dataset whose metadata pointed at a page I sell from ... this looks way too
+# much like a scam." The commercial block was deleted from README.md that day and left in
+# THIS FILE, so the next person to regenerate the README would have restored it without
+# noticing. Absence is checked here rather than trusted.
+NOT_FOR_SALE = ["gumroad.com/l/", "affiliate", "revenue share", "checkout", "coupon",
+                "discount", "paid report", "buy it", "purchase"]
+MONEY = re.compile(r"\$\s?\d")
+
+
+def no_offer(text):
+    hits = [m for m in NOT_FOR_SALE if m in text.lower()] + \
+           [m.group(0) for m in [MONEY.search(text)] if m]
+    if hits:
+        raise SystemExit(f"REFUSING to write a README carrying a commercial offer: {hits}. "
+                         "This repository publishes free data and links to free data.")
 
 
 def gate(s):
@@ -45,6 +64,7 @@ def gate(s):
 
 
 def build(s):
+    o = s["omitted"]
     c = s["by_category"]
     ranked = sorted(c.items(), key=lambda kv: -kv[1]["median_installs"])
     rows = "\n".join(
@@ -106,25 +126,33 @@ Sorted by median installs. `under 100%` and `stale` are floors, per the caveat a
 |---|---:|---:|---:|---:|---:|
 {rows}
 
-## Two redactions, and a disclosure
+## What was withheld, stated plainly
 
-While compiling this, two publishers turned out to have pasted a `vsce publish -p <token>`
-command into their **publisher display name**, which the public API serves to anyone. Those
-tokens are replaced here with `[REDACTED-CREDENTIAL]`. They were not tested, not retained and
-not published, and the exposure was reported to Microsoft on 2026-08-08 before this repository
-went public. One of the two extensions has roughly 34,000 installs, so a live publish token
-there would be a supply-chain problem rather than a theoretical one.
+**{o['display_names_redacted']} redacted display names.** That many publishers had pasted a
+`vsce publish -p <token>` command into their **publisher display name**, which the public API
+serves to anyone. Those values are replaced here with `[REDACTED-CREDENTIAL]`. They were not
+tested, not retained and not published, and the exposure was reported to Microsoft on
+2026-08-08 before this repository went public. One of those extensions has roughly 34,000
+installs, so a live publish token there would be a supply-chain problem rather than a
+theoretical one.
 
-If you regenerate this dataset with `scripts/crawl.py` you will collect those values yourself.
-Please do not publish them.
+**{o['rows']} omitted rows** of {o['crawl_total']:,} collected — {o['rows'] / o['crawl_total'] * 100:.2f}%,
+{o['installs']:,} installs, and it moves no figure above. Every one is omitted for the same
+reason: **its publisher id has the shape of a secret**, so a file containing it is a
+credential dump whether or not the string is live. {o['base32_publisher']} are 52-character
+base32 strings, which GitHub's scanner reads as an Azure DevOps token;
+{o['uuid_publisher']} are bare UUIDs, which it reads as an **Open VSX access token**. The
+UUIDs were **not tested against Open VSX** — that would mean using somebody else's
+credential, and the decision to withhold them does not depend on the answer.
 
-## One omission, stated plainly
+Nothing is hidden by being removed: all {o['rows']} are listed with their category and
+install count in [`data/omitted-rows.md`](data/omitted-rows.md). `scripts/crawl.py`
+regenerates the complete set including them, and `scripts/scrub.py` reproduces exactly the
+files published here — it refuses to write if a secret-shaped token survives anywhere in
+any of them.
 
-24 extensions were collected but are **not** in the published files. Their publisher id is a
-52-character base32 string that GitHub's secret scanning misclassifies as an Azure DevOps
-token, which blocks any push containing them. Those are public identifiers, not credentials.
-They are listed in [`data/omitted-rows.md`](data/omitted-rows.md), and `scripts/crawl.py`
-regenerates the complete set including them. 24 of 64,514 is 0.04% and moves no figure above.
+If you regenerate this dataset yourself you will collect these values. Please do not
+publish them.
 
 ## Files
 
@@ -166,19 +194,11 @@ because the platform does not publish it:
 - **[Gumroad Market Data 2026](https://github.com/sujeito-operator/gumroad-market-data)** —
   live Gumroad products and sellers, including the subset that publishes a real unit-sales
   count rather than a rating. Free CSVs, CC BY 4.0, DOI-archived, collector included.
-- **[Browsable category and seller breakdowns](https://sujeito-operator.github.io/gumroad-market-data/)**
-  of that dataset. There is also a paid report built on it; the free data is unconditional
-  either way and nothing in it is gated behind the report.
-- **[The report pays a revenue share to whoever sends the buyer](https://sujeito-operator.github.io/gumroad-market-data/affiliates.html)**
-  — the rate, the terms, what the data does and does not support, how many copies it has sold
-  so far, and every caveat are all on that one page, and you sign yourself up from it without
-  waiting for a reply. Gumroad tracks and pays it. You need a Gumroad account; that is the
-  only requirement.
 
 *(Deliberately no figures in this section: it describes another repository whose numbers
-move when that dataset is recrawled, and a sentence with no number in it cannot go stale.
-That is why the rate is behind the link rather than typed here — the linked page regenerates
-from a file the operator repo writes only after re-reading the live product page.)*
+move when that dataset is recrawled, and a sentence with no number in it cannot go stale.)*
+
+## Licence
 
 Data: CC BY 4.0. Code: MIT.
 """
@@ -188,6 +208,8 @@ if __name__ == "__main__":
     s = json.load(open(sys.argv[1] if len(sys.argv) > 1 else DEFAULT_SUMMARY))
     real = gate(s)
     out = sys.argv[2] if len(sys.argv) > 2 else REPO / "README.md"
-    open(out, "w").write(build(s))
+    text = build(s)
+    no_offer(text)
+    open(out, "w").write(text)
     print(f"wrote {out} — checked against {PUBLISHED_CSV.name}: "
           f"{real['extensions']:,} extensions, {real['publishers']:,} publishers")
