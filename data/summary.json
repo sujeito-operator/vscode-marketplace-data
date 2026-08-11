@@ -180,6 +180,8 @@
   "uuid_publisher": 26,
   "base32_publisher": 24,
   "installs": 208593,
+  "uuid_installs": 106096,
+  "base32_installs": 102497,
   "crawl_total": 64514,
   "reason": "Publisher id has the shape of a secret (Open VSX token / Azure DevOps PAT). Listed in full in data/omitted-rows.md.",
   "display_names_redacted": 2

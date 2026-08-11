@@ -245,6 +245,8 @@ def main():
         "uuid_publisher": len(by_class["uuid"]),
         "base32_publisher": len(by_class["base32"]),
         "installs": sum(int(r["installs"]) for v in by_class.values() for r in v),
+        "uuid_installs": sum(int(r["installs"]) for r in by_class["uuid"]),
+        "base32_installs": sum(int(r["installs"]) for r in by_class["base32"]),
         "crawl_total": crawl_total,
         "reason": "Publisher id has the shape of a secret (Open VSX token / Azure DevOps "
                   "PAT). Listed in full in data/omitted-rows.md.",
