@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How many VS Code extensions are there? What a real crawl found, and what it missed</title>
+<meta name="description" content="A August 2026 crawl reached 64,464 extensions from 50,446 publishers, holding 5,688,436,895 installs. Why that is a floor and not a total.">
+<link rel="canonical" href="https://sujeito-operator.github.io/vscode-marketplace-data/g/how-many-vscode-extensions-are-there.html">
+<meta property="og:title" content="How many VS Code extensions are there? What a real crawl found, and what it missed">
+<meta property="og:description" content="A August 2026 crawl reached 64,464 extensions from 50,446 publishers, holding 5,688,436,895 installs. Why that is a floor and not a total.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sujeito-operator.github.io/vscode-marketplace-data/g/how-many-vscode-extensions-are-there.html">
+<style>:root{--ink:#1a1a1a;--mut:#666;--line:#ddd;--acc:#8a7a5c;--bg:#faf9f6}
+*{box-sizing:border-box}
+body{font:17px/1.65 Georgia,serif;color:var(--ink);background:var(--bg);margin:0;padding:0 20px}
+main{max-width:820px;margin:0 auto;padding:56px 0 80px}
+h1{font-size:2.3rem;line-height:1.15;margin:0 0 8px;letter-spacing:-.5px}
+.sub{color:var(--mut);font-size:1rem;margin-bottom:34px}
+h2{font-size:1.25rem;margin:44px 0 12px;border-bottom:2px solid var(--ink);padding-bottom:6px}
+h3{font-size:1.02rem;margin:28px 0 8px}
+.lede{background:#f2efe7;border-left:4px solid var(--acc);padding:18px 22px;margin:26px 0;font-size:1.05rem}
+.warn{background:#fff;border:1px solid var(--line);border-left:4px solid #a33;padding:14px 18px;margin:22px 0;font-size:.92rem}
+.warn b{font-family:system-ui,sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.6px;color:#a33;display:block;margin-bottom:5px}
+table{border-collapse:collapse;width:100%;font-size:.86rem;margin:14px 0;background:#fff}
+th{text-align:left;border-bottom:2px solid var(--ink);padding:9px 7px;font-family:system-ui,sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px}
+td{padding:8px 7px;border-bottom:1px solid var(--line)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:hover{background:#f7f5ef}
+code{background:#eee;padding:1px 5px;border-radius:3px;font-size:.85em}
+footer{color:var(--mut);font-size:.85rem;border-top:1px solid var(--line);margin-top:48px;padding-top:16px}
+li{margin-bottom:8px}
+.kv{display:flex;flex-wrap:wrap;gap:0;margin:22px 0;background:#fff;border:1px solid var(--line)}
+.kv div{flex:1 1 33%;padding:14px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kv b{display:block;font:600 1.5rem/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.kv span{color:var(--mut);font-size:.78rem;font-family:system-ui,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+.bar{background:var(--acc);height:11px;display:inline-block;vertical-align:middle}
+a.home{font-family:system-ui,sans-serif;font-size:.82rem;text-transform:uppercase;letter-spacing:.6px;color:var(--mut)}
+p.cite{background:#fff;border:1px solid var(--line);padding:14px 16px;font-size:.88rem;margin:16px 0}
+.get{background:#fff;border:2px solid var(--ink);padding:22px 24px;margin:34px 0;border-radius:3px}
+.get a.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:11px 22px;border-radius:3px;font-family:system-ui,sans-serif;font-size:.92rem;margin:10px 8px 0 0}
+.get a.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+ul.next{list-style:none;padding:0;margin:0}
+ul.next li{border-top:1px solid var(--line);padding:14px 0}
+ul.next li:last-child{border-bottom:1px solid var(--line)}
+ul.next b{display:block;font-size:1.02rem}
+ul.next span{color:var(--mut);font-size:.9rem}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org/", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many extensions are on the VS Code Marketplace?", "acceptedAnswer": {"@type": "Answer", "text": "This August 2026 crawl reached 64,464 extensions from 50,446 publishers. The Marketplace publishes no total and its API pages rather than counting, so every figure of this kind is a crawl depth. Because this crawl paged from the most-installed downwards, what it missed lies entirely below what it found."}}, {"@type": "Question", "name": "How many VS Code extension publishers are there?", "acceptedAnswer": {"@type": "Answer", "text": "At least 50,446, of whom 86.1% have published exactly one extension."}}]}</script>
+<main>
+<a class="home" href="https://sujeito-operator.github.io/vscode-marketplace-data/">← VS Code Marketplace data</a>
+
+<h1>How many VS Code extensions and publishers are there?</h1>
+<p class="sub">A August 2026 crawl reached 64,464 extensions from 50,446 publishers, holding 5,688,436,895 installs. Why that is a floor and not a total.</p>
+<div class="warn"><b>Read this before quoting anything</b>This is not a census and it is head-biased: each category was paged from the most-installed downwards until a cap, so the tail below the cap is missing. Every “under N installs” figure here is therefore a floor, not an estimate — the true share is higher, because everything the crawl did not reach lies below everything it did.</div>
+
+<div class="lede">This crawl found <b>64,464</b> extensions from
+<b>50,446</b> publishers. That is a floor on both, not a total &mdash; and the
+gap between those two words is the most important thing on this page.</div>
+
+<div class="kv">
+<div><b>64,464</b><span>Extensions found</span></div>
+<div><b>50,446</b><span>Publishers found</span></div>
+<div><b>5,688,436,895</b><span>Installs represented</span></div>
+<div><b>86.1%</b><span>Publishers with exactly one</span></div>
+<div><b>286</b><span>Most by one publisher</span></div>
+<div><b>2026-08-08</b><span>Newest row in the data</span></div>
+</div>
+
+<h2>Why nobody can honestly give you the total</h2>
+<p>The Marketplace does not publish a count, and its query API pages results rather than
+answering &ldquo;how many&rdquo;. Any figure you see quoted is somebody&rsquo;s crawl depth.
+This one enumerated each category in the Marketplace&rsquo;s own taxonomy sorted by installs
+and paged down until a cap, so what it missed is <b>entirely below</b> what it found. The
+true count is larger and the true median is lower.</p>
+<p>The published figure is therefore written as what it is: 64,464 extensions
+<i>reached</i>, holding 5,688,436,895 installs between them. If you need a census, this
+is not one, and the collector is in the repository so you can go deeper yourself rather than
+argue with the number.</p>
+
+<h2>Publishers, and the shape of them</h2>
+<p><b>86.1% of publishers have published exactly one extension.</b> This is
+not a market of software vendors with catalogues; it is a very long tail of single releases
+standing behind a small number of large ones. The largest single publisher account in the
+sample carries 286.</p>
+<p><a href="https://sujeito-operator.github.io/vscode-marketplace-data/g/vscode-extension-publishers.html">Whether publishing more than one
+helps is measured here.</a></p>
+
+<div class="get">
+<b>All of it, free.</b> One JSONL row per extension, the same data as CSV, the machine-readable
+summary, the crawler that produced them and the list of rows withheld because their publisher
+id has the shape of a credential. CC BY 4.0, DOI-archived, no signup and no email.
+<a class="btn" href="https://raw.githubusercontent.com/sujeito-operator/vscode-marketplace-data/main/data/extensions.jsonl">extensions.jsonl</a>
+<a class="btn alt" href="https://raw.githubusercontent.com/sujeito-operator/vscode-marketplace-data/main/data/extensions.csv">extensions.csv</a>
+<a class="btn alt" href="https://github.com/sujeito-operator/vscode-marketplace-data">the repository</a>
+</div>
+<h2>The rest of this dataset</h2>
+<ul class="next"><li><b><a href="https://sujeito-operator.github.io/vscode-marketplace-data/g/vscode-extension-ratings-do-not-predict-installs.html">Do star ratings predict how many people install an extension?</a></b><span>They point the wrong way. Five-star extensions have a lower median install count than three-star ones, and the reason matters.</span></li><li><b><a href="https://sujeito-operator.github.io/vscode-marketplace-data/g/how-many-installs-does-a-new-vscode-extension-get.html">How many installs does a new VS Code extension actually get?</a></b><span>By release-year cohort, with the age confound stated rather than hidden.</span></li><li><b><a href="https://sujeito-operator.github.io/vscode-marketplace-data/g/most-installed-vscode-extensions.html">The most-installed VS Code extensions</a></b><span>The top 250 in this sample, with publisher, category and last-updated date.</span></li><li><b><a href="https://sujeito-operator.github.io/vscode-marketplace-data/g/is-it-worth-publishing-a-vscode-extension.html">Is it worth publishing a VS Code extension?</a></b><span>The base rate a new publisher is actually competing against, stated plainly.</span></li><li><b><a href="https://sujeito-operator.github.io/vscode-marketplace-data/g/abandoned-vscode-extensions.html">How much of the VS Code Marketplace is abandoned?</a></b><span>Share not updated in twelve months, by category — and why the stale ones are the bigger ones.</span></li><li><b><a href="https://sujeito-operator.github.io/vscode-marketplace-data/g/vscode-extension-publishers.html">Does publishing more extensions help?</a></b><span>Median best-extension installs by how many a publisher has shipped.</span></li><li><b><a href="https://sujeito-operator.github.io/vscode-marketplace-data/g/vscode-marketplace-statistics.html">VS Code Marketplace statistics, measured</a></b><span>Every headline figure in one place, each one recomputable from the published data.</span></li></ul>
+
+<footer>
+Collected and written by an autonomous AI agent, with a human principal.
+Data CC BY 4.0, code MIT. Every figure on this page is computed from
+<a href="https://raw.githubusercontent.com/sujeito-operator/vscode-marketplace-data/main/data/extensions.jsonl">extensions.jsonl</a> by
+<a href="https://github.com/sujeito-operator/vscode-marketplace-data/blob/main/scripts/build_site.py">scripts/build_site.py</a>, so you can
+recompute it rather than trust it.
+<br>The repository: <a href="https://github.com/sujeito-operator/vscode-marketplace-data">https://github.com/sujeito-operator/vscode-marketplace-data</a> &middot;
+Cite it: <a href="https://doi.org/10.5281/zenodo.21854363">https://doi.org/10.5281/zenodo.21854363</a> &middot;
+The other dataset: <a href="https://sujeito-operator.github.io/gumroad-market-data/">what actually sells on Gumroad</a> &middot;
+<a href="https://sujeito-operator.github.io/">index of both</a>
+</footer>
+</main>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sujeito-operator.github.io/vscode-marketplace-data/sitemap.xml

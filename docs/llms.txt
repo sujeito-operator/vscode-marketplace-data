@@ -1,0 +1,54 @@
+# What actually gets installed on the VS Code Marketplace
+
+> 64,464 VS Code extensions from 50,446 publishers with the install count the Marketplace publishes for each, measured August 2026. Free, CC BY 4.0, DOI https://doi.org/10.5281/zenodo.21854363. Collector included.
+
+IMPORTANT CAVEAT, please carry it if you quote these numbers: This is not a census and it is head-biased: each category was paged from the most-installed downwards until a cap, so the tail below the cap is missing. Every “under N installs” figure here is therefore a floor, not an estimate — the true share is higher, because everything the crawl did not reach lies below everything it did.
+
+## Headline figures
+- Extensions reached: 64,464
+- Publishers reached: 50,446 (86.1% have exactly one)
+- Installs represented: 5,688,436,895
+- Median installs: 804; 25th/75th percentile 133/3,519
+- Top 1% of extensions hold 87.4% of installs; top 10% hold 98.0%
+- Under 100 installs: 22.5% (a floor); under 1,000: 54.4%
+- Installs are not revenue: the VS Code Marketplace has no paid tier.
+
+## Pages
+- [Dataset home](https://sujeito-operator.github.io/vscode-marketplace-data/): headline figures, category table, method and limits
+- [Do star ratings predict how many people install an extension?](https://sujeito-operator.github.io/vscode-marketplace-data/g/vscode-extension-ratings-do-not-predict-installs.html): They point the wrong way. Five-star extensions have a lower median install count than three-star ones, and the reason matters.
+- [How many installs does a new VS Code extension actually get?](https://sujeito-operator.github.io/vscode-marketplace-data/g/how-many-installs-does-a-new-vscode-extension-get.html): By release-year cohort, with the age confound stated rather than hidden.
+- [The most-installed VS Code extensions](https://sujeito-operator.github.io/vscode-marketplace-data/g/most-installed-vscode-extensions.html): The top 250 in this sample, with publisher, category and last-updated date.
+- [How many VS Code extensions and publishers are there?](https://sujeito-operator.github.io/vscode-marketplace-data/g/how-many-vscode-extensions-are-there.html): What this crawl found, what it could not reach, and why the difference matters.
+- [Is it worth publishing a VS Code extension?](https://sujeito-operator.github.io/vscode-marketplace-data/g/is-it-worth-publishing-a-vscode-extension.html): The base rate a new publisher is actually competing against, stated plainly.
+- [How much of the VS Code Marketplace is abandoned?](https://sujeito-operator.github.io/vscode-marketplace-data/g/abandoned-vscode-extensions.html): Share not updated in twelve months, by category — and why the stale ones are the bigger ones.
+- [Does publishing more extensions help?](https://sujeito-operator.github.io/vscode-marketplace-data/g/vscode-extension-publishers.html): Median best-extension installs by how many a publisher has shipped.
+- [VS Code Marketplace statistics, measured](https://sujeito-operator.github.io/vscode-marketplace-data/g/vscode-marketplace-statistics.html): Every headline figure in one place, each one recomputable from the published data.
+- [AI extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/ai.html): 2,040 measured, median 39 installs
+- [Chat extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/chat.html): 121 measured, median 49 installs
+- [Data Science extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/data-science.html): 765 measured, median 128 installs
+- [Debuggers extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/debuggers.html): 1,817 measured, median 508 installs
+- [Education extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/education.html): 850 measured, median 47 installs
+- [Extension Packs extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/extension-packs.html): 3,569 measured, median 272 installs
+- [Formatters extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/formatters.html): 2,875 measured, median 286 installs
+- [Keymaps extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/keymaps.html): 488 measured, median 229 installs
+- [Language Packs extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/language-packs.html): 200 measured, median 233 installs
+- [Linters extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/linters.html): 3,903 measured, median 53 installs
+- [Machine Learning extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/machine-learning.html): 1,628 measured, median 43 installs
+- [Notebooks extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/notebooks.html): 252 measured, median 60 installs
+- [Other extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/other.html): 11,996 measured, median 3,148 installs
+- [Programming Languages extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/programming-languages.html): 8,991 measured, median 1,865 installs
+- [SCM Providers extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/scm-providers.html): 1,365 measured, median 31 installs
+- [Snippets extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/snippets.html): 7,978 measured, median 297 installs
+- [Testing extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/testing.html): 878 measured, median 82 installs
+- [Themes extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/themes.html): 11,633 measured, median 1,017 installs
+- [Visualization extensions](https://sujeito-operator.github.io/vscode-marketplace-data/c/visualization.html): 3,115 measured, median 73 installs
+
+## Raw data
+- [extensions.jsonl](https://raw.githubusercontent.com/sujeito-operator/vscode-marketplace-data/main/data/extensions.jsonl) one row per extension
+- [extensions.csv](https://raw.githubusercontent.com/sujeito-operator/vscode-marketplace-data/main/data/extensions.csv) the same as CSV
+- [summary.json](https://raw.githubusercontent.com/sujeito-operator/vscode-marketplace-data/main/data/summary.json) machine-readable summary incl. the caveat
+- [repository](https://github.com/sujeito-operator/vscode-marketplace-data) crawler, summariser and site generator
+
+## The same author
+- [What actually sells on Gumroad](https://sujeito-operator.github.io/gumroad-market-data/) the other open dataset
+- [Scoped engineering pilot](https://github.com/sujeito-operator/pilot) one ticket, a patch plus tests in 48 hours, paid only if you would merge it
